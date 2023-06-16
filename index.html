@@ -71,7 +71,8 @@
             font-size: 24px;
         }
 
-        .sun-icon {
+        .sun-icon,
+        .moon-icon {
             position: fixed;
             top: 10px;
             right: 10px;
@@ -85,12 +86,21 @@
             background-color: white;
             color: black;
         }
+
+        .light-mode .sun-icon {
+            display: none;
+        }
+
+        .light-mode .moon-icon {
+            display: inline-block;
+        }
     </style>
 </head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
 <body>
     <i class="fas fa-sun sun-icon"></i>
+    <i class="fas fa-moon moon-icon"></i>
     <div class="navigation">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
@@ -110,10 +120,15 @@
 
     <script>
         const sunIcon = document.querySelector('.sun-icon');
+        const moonIcon = document.querySelector('.moon-icon');
         const body = document.querySelector('body');
 
         sunIcon.addEventListener('click', function() {
-            body.classList.toggle('light-mode');
+            body.classList.add('light-mode');
+        });
+
+        moonIcon.addEventListener('click', function() {
+            body.classList.remove('light-mode');
         });
     </script>
 </body>
