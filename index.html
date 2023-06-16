@@ -77,6 +77,7 @@
             right: 10px;
             color: white;
             font-size: 24px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -100,5 +101,14 @@
         <a href="https://www.researchgate.net/profile/Aria-Dolatabadian" target="_blank" rel="noopener noreferrer"><i class="fab fa-researchgate"></i></a>
         <a href="https://github.com/Aria-Dolatabadian" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
     </div>
+
+    <script>
+        const sunIcon = document.querySelector('.sun-icon');
+        const body = document.querySelector('body');
+
+        sunIcon.addEventListener('click', function() {
+            body.classList.toggle('light-mode');
+        });
+    </script>
 </body>
 </html>
