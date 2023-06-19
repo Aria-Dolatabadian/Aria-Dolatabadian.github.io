@@ -37,7 +37,6 @@
 
         .lab-link {
             color: grey;
-/*             font-weight: bold; */
             text-decoration: underline;
         }
 
@@ -48,6 +47,7 @@
         .bold {
             font-weight: bold;
         }
+
         .social-icons {
             text-align: center;
             margin-top: 20px;
@@ -60,15 +60,43 @@
             text-decoration: none;
             font-size: 24px;
         }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .gallery-item {
+            flex: 0 0 33.33%; /* Set width to 33.33% for 3-column layout */
+            margin-bottom: 20px;
+        }
+
+        .gallery-item img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
     </style>
 </head>
 <body>
     <div class="navigation">
         <a href="index.html">Home</a>
     </div>
-    
-    
-    
+
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="Gallery/1.jpg" alt="Photo 1">
+        </div>
+        <div class="Gallery-item">
+            <img src="gallery/2.jpg" alt="Photo 2">
+        </div>
+        <div class="Gallery-item">
+            <img src="gallery/3.jpg" alt="Photo 3">
+        </div>
+        <!-- Add more gallery items as needed -->
+    </div>
+
     <div class="social-icons">
         <a href="https://scholar.google.com.au/citations?user=gUIDaDkAAAAJ&hl=en" target="_blank" rel="noopener noreferrer"><i class="fab fa-google"></i></a>
         <a href="https://www.linkedin.com/in/ariadolatabadian/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
