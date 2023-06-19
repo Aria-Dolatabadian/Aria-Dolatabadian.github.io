@@ -1,42 +1,152 @@
-<!-- modify this form HTML and place wherever you want your form -->
-<form id="my-form" action="https://formspree.io/f/xwkjgwag" method="POST">
-  <label>Email:</label>
-  <input type="email" name="email" />
-  <label>Message:(600 Characters with spaces)</label>
-  <input type="text" name="message" />
-  <button id="my-form-button">Submit</button>
-  <p id="my-form-status"></p>
-</form>
-<!-- Place this script at the end of the body tag -->
-<script>
-    var form = document.getElementById("my-form");
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: black;
+            color: grey;
+            text-align: justify;
+            padding: 0 20px;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+        }
+
+        .navigation {
+            text-align: center;
+            margin-bottom: 100px;
+            padding-top: 10px;
+        }
+
+        .navigation a {
+            margin-right: 20px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .bio {
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .lab-link {
+            color: grey;
+/*             font-weight: bold; */
+            text-decoration: underline;
+        }
+
+        .italic {
+            font-style: italic;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+        .social-icons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin-right: 10px;
+            color: grey;
+            text-decoration: none;
+            font-size: 24px;
+        }
+
+        /* Form Styles */
+        #my-form {
+            margin-top: 20px;
+        }
+
+        #my-form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        #my-form input[type="email"],
+        #my-form input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        #my-form button {
+            background-color: grey;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #my-form-status {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navigation">
+        <a href="index.html">Home</a>
+    </div>
     
-    async function handleSubmit(event) {
-      event.preventDefault();
-      var status = document.getElementById("my-form-status");
-      var data = new FormData(event.target);
-      fetch(event.target.action, {
-        method: form.method,
-        body: data,
-        headers: {
-            'Accept': 'application/json'
+    <div class="bio">
+        <!-- Bio content here -->
+    </div>
+    
+    <div class="social-icons">
+        <!-- Social icons here -->
+    </div>
+
+    <!-- Form -->
+    <form id="my-form" action="https://formspree.io/f/xwkjgwag" method="POST">
+        <label>Email:</label>
+        <input type="email" name="email" required>
+        <label>Message (600 Characters with spaces):</label>
+        <input type="text" name="message" required>
+        <button id="my-form-button" type="submit">Submit</button>
+        <p id="my-form-status"></p>
+    </form>
+
+    <!-- Include the Font Awesome CSS library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <!-- Form Submission Script -->
+    <script>
+        var form = document.getElementById("my-form");
+        
+        async function handleSubmit(event) {
+            event.preventDefault();
+            var status = document.getElementById("my-form-status");
+            var data = new FormData(event.target);
+            fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    status.innerHTML = "Thanks for your submission!";
+                    form.reset();
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwnProperty.call(data, 'errors')) {
+                            status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+                        } else {
+                            status.innerHTML = "Oops! There was a problem submitting your form.";
+                        }
+                    });
+                }
+            }).catch(error => {
+                status.innerHTML = "Oops! There was a problem submitting your form.";
+            });
         }
-      }).then(response => {
-        if (response.ok) {
-          status.innerHTML = "Thanks for your submission!";
-          form.reset()
-        } else {
-          response.json().then(data => {
-            if (Object.hasOwn(data, 'errors')) {
-              status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
-            } else {
-              status.innerHTML = "Oops! There was a problem submitting your form"
-            }
-          })
-        }
-      }).catch(error => {
-        status.innerHTML = "Oops! There was a problem submitting your form"
-      });
-    }
-    form.addEventListener("submit", handleSubmit)
-</script>
+
+        form.addEventListener("submit", handleSubmit);
+    </script>
+</body>
+</html>
