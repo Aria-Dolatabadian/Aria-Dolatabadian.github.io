@@ -109,17 +109,21 @@
         <a href="https://github.com/Aria-Dolatabadian" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
     </div>
 
-    <!-- Script to increment and display visitor count -->
-    <script>
-        // Check if the visitor count is stored in localStorage
-        if (localStorage.getItem('visitorCount')) {
-            // If it exists, increment it by 1
-            let count = parseInt(localStorage.getItem('visitorCount'));
-            count++;
-            localStorage.setItem('visitorCount', count);
-        } else {
-            // If it doesn't exist, set it to 1
-            localStorage.setItem('visitorCount', 1);
+   <script>
+        // Check if the visitor count is stored in sessionStorage
+        if (!sessionStorage.getItem('visited')) {
+            // If it doesn't exist, set it to true and increment the count
+            sessionStorage.setItem('visited', true);
+
+            if (localStorage.getItem('visitorCount')) {
+                // If it exists, increment it by 1
+                let count = parseInt(localStorage.getItem('visitorCount'));
+                count++;
+                localStorage.setItem('visitorCount', count);
+            } else {
+                // If it doesn't exist, set it to 1
+                localStorage.setItem('visitorCount', 1);
+            }
         }
 
         // Display the visitor count on the page
