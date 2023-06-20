@@ -59,6 +59,12 @@
             text-decoration: none;
             font-size: 24px;
         }
+
+        .citation-metrics {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
     </style>
     <script>
         function fetchGoogleScholarData() {
@@ -104,21 +110,17 @@
         </p>
         <!-- Add more publication links -->
 
-        <p>
-            <strong>Citation.
-
-
-
-
-        <p>
-            <strong>Citation Count:</strong> <span id="citation-count"></span>
-        </p>
-        <p>
-            <strong>h-index:</strong> <span id="h-index"></span>
-        </p>
-        <p>
-            <strong>i10-index:</strong> <span id="i10-index"></span>
-        </p>
+        <div class="citation-metrics">
+            <p>
+                <strong>Citation Count:</strong> <span id="citation-count"></span>
+            </p>
+            <p>
+                <strong>h-index:</strong> <span id="h-index"></span>
+            </p>
+            <p>
+                <strong>i10-index:</strong> <span id="i10-index"></span>
+            </p>
+        </div>
         <!-- Add more publication information as needed -->
     </div>
 
@@ -131,4 +133,3 @@
     <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
 </body>
 </html>
-
