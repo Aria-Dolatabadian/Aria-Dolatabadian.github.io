@@ -81,13 +81,34 @@
             font-size: 24px;
         }
 
+        .search-box {
+            text-align: center;
+            margin-top: 20px;
+        }
 
+        .search-box input {
+            padding: 8px;
+            width: 300px;
+            font-size: 16px;
+        }
+
+        .search-results {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .search-results a {
+            display: block;
+            margin-bottom: 10px;
+            color: white;
+            text-decoration: none;
+        }
     </style>
 </head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
 <body>
-    
+
     <div class="navigation">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
@@ -97,13 +118,14 @@
         <a href="links.html">Links</a>
         <a href="downloads.html">Downloads</a>
         <a href="message.html">Contact</a>
-        
     </div>
     <h1 class="slogan">"Solving the Genetic Puzzle for Sustainable Agriculture<br> Unraveling Plant-Pathogen Interactions with Precision and Passion"</h1>
     <img class="profile-image" src="a.jpg" alt="Your Photo">
     <h1 class="name">Aria Dolatabadian</h1>
-    <h1 class="title">School of Biological Sciences<br>The University of Western Australia</h1>
-    <p class="description">Crop Genomics | Plant Pathology |  Plant-Microbe Interaction | Data Analysis and Visualisation</p>
+    <h1 class="title">School of Biological
+
+ Sciences<br>The University of Western Australia</h1>
+    <p class="description">Crop Genomics | Plant Pathology | Plant-Microbe Interaction | Data Analysis and Visualization</p>
     <div class="social-icons">
         <a href="https://scholar.google.com.au/citations?user=gUIDaDkAAAAJ&hl=en" target="_blank" rel="noopener noreferrer"><i class="fab fa-google"></i></a>
         <a href="https://www.linkedin.com/in/ariadolatabadian/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
@@ -111,9 +133,55 @@
         <a href="https://www.researchgate.net/profile/Aria-Dolatabadian" target="_blank" rel="noopener noreferrer"><i class="fab fa-researchgate"></i></a>
         <a href="https://github.com/Aria-Dolatabadian" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
         <a href="https://orcid.org/0000-0002-2158-4485" target="_blank" rel="noopener noreferrer"><i class="fab fa-orcid"></i></a>
-
     </div>
 
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search...">
+    </div>
+
+    <div class="search-results" id="searchResults">
+    </div>
+
+    <script>
+        // Search function
+        function search() {
+            var input = document.getElementById("searchInput").value.toLowerCase();
+            var links = document.getElementsByTagName("a");
+            var resultsContainer = document.getElementById("searchResults");
+            var results = [];
+
+            // Iterate through all links and check if the text matches the input
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i];
+                var text = link.innerText.toLowerCase();
+
+                if (text.includes(input)) {
+                    results.push(link);
+                }
+            }
+
+            // Clear previous search results
+            resultsContainer.innerHTML = "";
+
+            // Display search results
+            if (results.length > 0) {
+                for (var j = 0; j < results.length; j++) {
+                    var result = results[j];
+                    var resultLink = document.createElement("a");
+                    resultLink.href = result.href;
+                    resultLink.innerText = result.innerText;
+                    resultsContainer.appendChild(resultLink);
+                }
+            } else {
+                var noResults = document.createElement("p");
+                noResults.innerText = "No results found.";
+                resultsContainer.appendChild(noResults);
+            }
+        }
+
+        // Event listener for search input
+        document.getElementById("searchInput").addEventListener("input", search);
     </script>
 </body>
 </html>
+
