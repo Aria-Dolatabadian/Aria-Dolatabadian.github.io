@@ -2,33 +2,92 @@
 <html>
 <head>
     <style>
-        /* Existing styles... */
+        body {
+            background-color: black;
+            color: grey;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            background-image: url('background.gif');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
 
-        .search-box {
+        .navigation {
             text-align: center;
             margin-top: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
         }
 
-        .search-box input {
-            padding: 8px;
-            width: 300px;
-            font-size: 16px;
-        }
-
-        .search-results {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .search-results a {
-            display: block;
-            margin-bottom: 10px;
+        .navigation a {
+            margin-right: 20px;
             color: white;
             text-decoration: none;
         }
+
+        .slogan {
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 18px;
+            line-height: 1.5;
+            animation: moveText 3s infinite alternate;
+        }
+
+        @keyframes moveText {
+            0% { transform: translateX(-30px); }
+            100% { transform: translateX(30px); }
+        }
+
+        .profile-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .name {
+            font-size: 18px;
+        }
+
+        .title {
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .description {
+            font-size: 16px;
+        }
+
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin-right: 10px;
+            color: grey;
+            text-decoration: none;
+            font-size: 24px;
+        }
+
+
     </style>
 </head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
 <body>
+    
     <div class="navigation">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
@@ -38,8 +97,8 @@
         <a href="links.html">Links</a>
         <a href="downloads.html">Downloads</a>
         <a href="message.html">Contact</a>
+        
     </div>
-
     <h1 class="slogan">"Solving the Genetic Puzzle for Sustainable Agriculture<br> Unraveling Plant-Pathogen Interactions with Precision and Passion"</h1>
     <img class="profile-image" src="a.jpg" alt="Your Photo">
     <h1 class="name">Aria Dolatabadian</h1>
@@ -52,54 +111,9 @@
         <a href="https://www.researchgate.net/profile/Aria-Dolatabadian" target="_blank" rel="noopener noreferrer"><i class="fab fa-researchgate"></i></a>
         <a href="https://github.com/Aria-Dolatabadian" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
         <a href="https://orcid.org/0000-0002-2158-4485" target="_blank" rel="noopener noreferrer"><i class="fab fa-orcid"></i></a>
+
     </div>
 
-    <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Search...">
-    </div>
-
-    <div class="search-results" id="searchResults">
-    </div>
-
-    <script>
-        // Search function
-        function search() {
-            var input = document.getElementById("searchInput").value.toLowerCase();
-            var links = document.getElementsByTagName("a");
-            var resultsContainer = document.getElementById("searchResults");
-            var results = [];
-
-            // Iterate through all links and check if the text matches the input
-            for (var i = 0; i < links.length; i++) {
-                var link = links[i];
-                var text = link.innerText.toLowerCase();
-
-                if (text.includes(input)) {
-                    results.push(link);
-                }
-            }
-
-            // Clear previous search results
-            resultsContainer.innerHTML = "";
-
-            // Display search results
-            if (results.length > 0) {
-                for (var j = 0; j < results.length; j++) {
-                    var result = results[j];
-                    var resultLink = document.createElement("a");
-                    resultLink.href = result.href;
-                    resultLink.innerText = result.innerText;
-                    resultsContainer.appendChild(resultLink);
-                }
-            } else {
-                var noResults = document.createElement("p");
-                noResults.innerText = "No results found.";
-                resultsContainer.appendChild(noResults);
-            }
-        }
-
-        // Event listener for search input
-        document.getElementById("searchInput").addEventListener("input", search);
     </script>
 </body>
 </html>
