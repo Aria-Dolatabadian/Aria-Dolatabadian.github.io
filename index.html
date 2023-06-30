@@ -81,7 +81,26 @@
             font-size: 24px;
         }
 
+        /* New styles for search box */
+        .search-box {
+            text-align: center;
+            margin-top: 10px;
+        }
 
+        .search-box input[type="text"] {
+            padding: 5px;
+            width: 300px;
+            font-size: 16px;
+        }
+
+        .search-box input[type="submit"] {
+            padding: 5px 10px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
@@ -97,8 +116,8 @@
         <a href="links.html">Links</a>
         <a href="downloads.html">Downloads</a>
         <a href="message.html">Contact</a>
-        
     </div>
+
     <h1 class="slogan">"Solving the Genetic Puzzle for Sustainable Agriculture<br> Unraveling Plant-Pathogen Interactions with Precision and Passion"</h1>
     <img class="profile-image" src="a.jpg" alt="Your Photo">
     <h1 class="name">Aria Dolatabadian</h1>
@@ -111,9 +130,14 @@
         <a href="https://www.researchgate.net/profile/Aria-Dolatabadian" target="_blank" rel="noopener noreferrer"><i class="fab fa-researchgate"></i></a>
         <a href="https://github.com/Aria-Dolatabadian" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
         <a href="https://orcid.org/0000-0002-2158-4485" target="_blank" rel="noopener noreferrer"><i class="fab fa-orcid"></i></a>
-
     </div>
 
-    </script>
+    <!-- Add the search box -->
+    <div class="search-box">
+        <form action="search.html" method="GET">
+            <input type="text" name="query" placeholder="Search across pages...">
+            <input type="submit" value="Search">
+        </form>
+    </div>
 </body>
 </html>
