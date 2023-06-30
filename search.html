@@ -12,6 +12,20 @@
     </form>
 
     <!-- Add the code to handle the search query and display the results here -->
+    <div id="searchResults"></div>
+
+    <script>
+        // Retrieve the search query from the URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const query = urlParams.get('query');
+
+        // Display the search query in the search results
+        const searchResultsElement = document.getElementById('searchResults');
+        searchResultsElement.innerHTML = `<p>Search query: ${query}</p>`;
+
+        // Add your own logic to process the search query and generate the desired search results
+
+    </script>
 
 </body>
 </html>
